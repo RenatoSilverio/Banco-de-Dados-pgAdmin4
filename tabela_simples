@@ -1,0 +1,41 @@
+create table empresa(
+	id serial,
+	nome varchar[50] not null,
+	cnpj varchar[14] not null,
+	
+	primary key (Id)
+);
+
+create table departamento(
+	id serial,
+	nome varchar[50] not null,
+	
+	primary key (Id)
+);
+
+create table funcionario(
+	id serial,
+	nome varchar[50] not null,
+	cpf varchar [11] not null,
+	nascimento date not null,
+	ctps integer not null,
+	salario numeric(8,2) not null,
+	primary key (Id),
+	empresa_id integer not null,
+	departamento_id integer not null,
+	constraint empresa_funcionario_fk
+		foreign key (empresa_id)
+		references empresa(id),
+	constraint departamento_funcionario_fk
+		foreign key (departamento_id)
+		references departamento(id)
+	
+);
+create table dependentes(
+	id serial,
+	nome varchar[50] not null,
+	cpf varchar[11] not null,
+	nascimeno date not null,
+				
+	primary key (Id)
+);
